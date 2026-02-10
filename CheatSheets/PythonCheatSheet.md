@@ -1,7 +1,7 @@
 # Python Cheat Sheet (English / Magyar)
 
 These are the secret codes every Python adept should learn, so they can talk to The Python.  
-_E titkos kódokat kell elsajátítania minden jövendőbeli Piton növendéknek, hogy szólni tudjanak A Pitonhoz_
+_E titkos kódokat kell elsajátítania a Kígyótestvériség minden jövendőbeli növendéknek, hogy szólni tudjanak A Kígyóhoz_
 
 ---
 
