@@ -1,208 +1,223 @@
 # ----------------------------------------
-# WHAT IS A DICTIONARY?
+# WHAT IS A LIST?
 # ----------------------------------------
-
-# A dictionary stores data as KEY → VALUE pairs.
-# Keys must be unique and immutable (strings, numbers, tuples).
-# Values can be anything.
-
-person = {
-    "name": "Alice",
-    "age": 25,
-    "city": "London"
-}
-
+# A list stores data in a sequential order.
+# Lists can contain elements of different data types, and elements can be accessed by index.
+# Indexing in Python starts from 0.
 
 # ----------------------------------------
-# CREATING DICTIONARIES
+# CREATING LISTS
 # ----------------------------------------
 
-# Empty dictionary
-d = {}
+numbers = [1, 2, 3, 4]        # A list with 4 integers
+names = ["Alice", "Bob"]      # A list with strings
+mixed = [1, "hello", 3.5]     # Lists can contain mixed data types
+empty = []                    # Create an empty list
 
-# Another way to create an empty dictionary
-d = dict()
-
-# Creating with values
-scores = {
-    "Alice": 10,
-    "Bob": 8,
-    "Carol": 12
-}
-
-# Using the dict constructor
-user = dict(name="John", age=30)
+# You can also create lists with the list() constructor
+letters = list("hello")       # ['h', 'e', 'l', 'l', 'o']
 
 
 # ----------------------------------------
-# ACCESSING VALUES
+# ACCESSING ELEMENTS
 # ----------------------------------------
 
-person = {"name": "Alice", "age": 25}
+numbers = [10, 20, 30, 40]
 
-person["name"]      # "Alice"
-person["age"]       # 25
+numbers[0]    # First element -> 10
+numbers[1]    # Second element -> 20
 
-# If the key does not exist, Python raises a KeyError
+numbers[-1]   # Last element -> 40
+numbers[-2]   # Second from the end -> 30
 
-
-# ----------------------------------------
-# SAFE ACCESS WITH get()
-# ----------------------------------------
-
-person = {"name": "Alice"}
-
-person.get("name")      # "Alice"
-
-person.get("age")       # None (no error)
-
-person.get("age", 0)    # Default value if key missing
+# Python uses ZERO-BASED indexing
 
 
 # ----------------------------------------
-# ADDING OR MODIFYING VALUES
+# SLICING LISTS
 # ----------------------------------------
 
-person = {"name": "Alice"}
+numbers = [10, 20, 30, 40, 50]
 
-# Add a new key
-person["age"] = 25
+numbers[1:4]     # [20, 30, 40] (start inclusive, end exclusive)
+numbers[:3]      # [10, 20, 30] (from start)
+numbers[2:]      # [30, 40, 50] (to end)
+numbers[::2]     # [10, 30, 50] (step size 2)
 
-# Modify existing value
-person["age"] = 26
-
-
-# ----------------------------------------
-# REMOVING ITEMS
-# ----------------------------------------
-
-person = {"name": "Alice", "age": 25}
-
-del person["age"]       # Delete by key
-
-age = person.pop("age") # Remove and return value
-
-person.clear()          # Remove everything
+# Slicing creates a NEW list
 
 
 # ----------------------------------------
-# CHECKING IF KEY EXISTS
+# MODIFYING ELEMENTS
 # ----------------------------------------
 
-person = {"name": "Alice", "age": 25}
+numbers = [10, 20, 30]
 
-"name" in person        # True
-"city" in person        # False
-
-
-# ----------------------------------------
-# DICTIONARY LENGTH
-# ----------------------------------------
-
-person = {"name": "Alice", "age": 25}
-
-len(person)     # Number of key-value pairs
+numbers[1] = 99     # Change element at index 1
+# Result: [10, 99, 30]
 
 
 # ----------------------------------------
-# LOOPING THROUGH A DICTIONARY
+# ADDING ELEMENTS
 # ----------------------------------------
 
-scores = {"Alice": 10, "Bob": 8}
+numbers = [1, 2, 3]
 
-# Loop through keys
-for name in scores:
-    print(name)
+numbers.append(4)       # Adds element to the end
+# [1, 2, 3, 4]
 
-# Loop through values
-for score in scores.values():
-    print(score)
+numbers.insert(1, 99)   # Insert value at index
+# [1, 99, 2, 3, 4]
 
-# Loop through key-value pairs
-for name, score in scores.items():
-    print(name, score)
+numbers.extend([5, 6])  # Add elements from another list
+# [1, 99, 2, 3, 4, 5, 6]
 
 
 # ----------------------------------------
-# GETTING KEYS, VALUES, ITEMS
+# REMOVING ELEMENTS
 # ----------------------------------------
 
-scores = {"Alice": 10, "Bob": 8}
+numbers = [1, 2, 3, 4]
 
-scores.keys()      # dict_keys(['Alice', 'Bob'])
-scores.values()    # dict_values([10, 8])
-scores.items()     # dict_items([('Alice',10), ('Bob',8)])
+numbers.remove(3)   # Remove first occurrence of value
+# [1, 2, 4]
 
+numbers.pop()       # Remove and return last element
+# returns 4
 
-# ----------------------------------------
-# COPYING DICTIONARIES
-# ----------------------------------------
+numbers.pop(0)      # Remove element at index
+# removes first element
 
-a = {"x": 1, "y": 2}
+del numbers[1]      # Delete element at index
 
-b = a           # NOT a copy (same object)
-
-c = a.copy()    # Real copy
+numbers.clear()     # Remove all elements
 
 
 # ----------------------------------------
-# MERGING DICTIONARIES
+# LIST LENGTH
 # ----------------------------------------
 
-a = {"x": 1}
-b = {"y": 2}
+numbers = [10, 20, 30]
 
-c = a | b       # Python 3.9+ merge operator
-# {'x':1, 'y':2}
-
-a.update(b)     # Modifies a
+len(numbers)    # returns 3
 
 
 # ----------------------------------------
-# DICTIONARY COMPREHENSIONS
+# CHECKING MEMBERSHIP
 # ----------------------------------------
 
-# Create dictionary of squares
-squares = {x: x*x for x in range(5)}
+numbers = [10, 20, 30]
 
-# Result:
-# {0:0, 1:1, 2:4, 3:9, 4:16}
+20 in numbers       # True
+99 in numbers       # False
 
-
-# ----------------------------------------
-# NESTED DICTIONARIES
-# ----------------------------------------
-
-students = {
-    "Alice": {"age": 20, "grade": "A"},
-    "Bob": {"age": 21, "grade": "B"}
-}
-
-students["Alice"]["grade"]   # "A"
+20 not in numbers   # False
 
 
 # ----------------------------------------
-# COMMON PATTERN: COUNTING
+# LOOPING THROUGH A LIST
 # ----------------------------------------
 
-text = "banana"
-counts = {}
+numbers = [10, 20, 30]
 
-for letter in text:
-    if letter not in counts:
-        counts[letter] = 0
-    counts[letter] += 1
+for n in numbers:
+    print(n)       # Prints each element
 
-# Result:
-# {'b':1, 'a':3, 'n':2}
+
+# Loop with index
+for i in range(len(numbers)):
+    print(i, numbers[i])
+
+
+# Recommended: index + value
+for i, value in enumerate(numbers):
+    print(i, value)
 
 
 # ----------------------------------------
-# SHORTER COUNTING WITH get()
+# SORTING
 # ----------------------------------------
 
-text = "banana"
-counts = {}
+numbers = [5, 2, 8, 1]
 
-for letter in text:
-    counts[letter] = counts.get(letter, 0) + 1
+numbers.sort()        # Sort list in-place
+# [1, 2, 5, 8]
+
+numbers.sort(reverse=True)   # Descending order
+
+sorted_numbers = sorted(numbers)   # Returns NEW sorted list
+
+
+# ----------------------------------------
+# REVERSING
+# ----------------------------------------
+
+numbers.reverse()     # Reverse list in-place
+
+rev = numbers[::-1]   # Create reversed copy using slicing
+
+
+# ----------------------------------------
+# LIST CONCATENATION
+# ----------------------------------------
+
+a = [1, 2]
+b = [3, 4]
+
+c = a + b     # [1, 2, 3, 4]
+
+a += b        # Extends list a
+
+
+# ----------------------------------------
+# LIST REPEAT
+# ----------------------------------------
+
+zeros = [0] * 5    # [0, 0, 0, 0, 0]
+
+
+# ----------------------------------------
+# COPYING LISTS
+# ----------------------------------------
+
+a = [1, 2, 3]
+
+b = a            # NOT a copy (same object!)
+
+c = a.copy()     # Real copy
+d = a[:]         # Another way to copy
+
+
+# ----------------------------------------
+# LIST COMPREHENSIONS (VERY PYTHONIC)
+# ----------------------------------------
+
+# Create list of squares
+squares = [x*x for x in range(10)]
+
+# With condition
+even = [x for x in range(10) if x % 2 == 0]
+
+
+# ----------------------------------------
+# COMMON BUILT-IN FUNCTIONS
+# ----------------------------------------
+
+numbers = [4, 7, 1, 9]
+
+min(numbers)    # 1
+max(numbers)    # 9
+sum(numbers)    # 21
+
+
+# ----------------------------------------
+# NESTED LISTS (LIST OF LISTS)
+# ----------------------------------------
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+matrix[0][1]    # 2
