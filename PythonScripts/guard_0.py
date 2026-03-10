@@ -10,3 +10,7 @@
 #       - less than 15 → sent to the playground
 #       - 15–17 → thrown out
 # ------------------------------------------------------------
+
+has_vip = input("Do you have a VIP card? (yes/no): ")
+
+print("The answer was: ", has_vip)
